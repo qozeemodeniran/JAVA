@@ -1,0 +1,26 @@
+import java.util.Random;
+//Simulate the rolling of two dice many times and report the % of times each value was rolled.
+public class RollingOfTwoDice {
+	public static void main(String args[]){
+		//Declaring a constant for number of rolls...
+		final int NUMROLLS = 1000000;
+		//Declare an array of counters...
+		int[] count = new int[13]; //not using the first two elements of the array...
+		//Creating Random object for simulating the rolling of die...
+		Random rand = new Random();
+		//Performing desired number of rolls...
+		for(int i = 0; i < NUMROLLS; i++)
+		{
+			//Rolling the two dice...
+			int die1 = rand.nextInt(6) + 1;
+			int die2 = rand.nextInt(6) + 1;
+			//Incrementing corresponding counter...
+			count[die1 + die2]++;
+		}
+		//Reporting % after rolls were done...
+		for(int j = 2; j < count.length; j++)
+		{
+			System.out.println("The value of "+j+" was rolled "+100.0*count[j]/NUMROLLS+"% of the time.");
+		}
+	}
+}
